@@ -1,11 +1,17 @@
 package com.example.kamran.logingreentheme;
 
+import com.example.kamran.logingreentheme.model.Profile;
+import com.example.kamran.logingreentheme.model.User;
+
 import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface Api {
@@ -19,7 +25,10 @@ public interface Api {
 
     @FormUrlEncoded
     @POST("users/login/")
-    Call<ResponseBody> loginUser(
+    Call<User> loginUser(
             @FieldMap HashMap<String, String> data
             );
+
+    @GET("profiles/")
+    Call<List<Profile>> getJson();
 }

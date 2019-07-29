@@ -45,7 +45,7 @@ public class signup extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent it = new Intent(signup.this,login.class);
+                Intent it = new Intent(signup.this, MainActivity.class);
                 startActivity(it);
             }
         });
@@ -101,13 +101,15 @@ public class signup extends AppCompatActivity
                     try {
                         String s = response.body().string();
                         Toast.makeText(signup.this, s, Toast.LENGTH_SHORT).show();
+                        Intent it = new Intent(signup.this, login.class);
+                        startActivity(it);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
                 else {
                     try {
-                        Toast.makeText(signup.this, "Error: " + response.errorBody().string(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(signup.this, response.errorBody().string(), Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         Toast.makeText(signup.this, "Error: Unknown ", Toast.LENGTH_LONG).show();
                         e.printStackTrace();

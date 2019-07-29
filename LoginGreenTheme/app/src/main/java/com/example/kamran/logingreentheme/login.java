@@ -9,10 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kamran.logingreentheme.model.User;
+
 import java.io.IOException;
 import java.util.HashMap;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,6 +38,9 @@ public class login extends AppCompatActivity
         sup.setTypeface(custom_font);
         usrusr.setTypeface(custom_font);
         pswd.setTypeface(custom_font);
+
+        final String[] token = new String[1];
+
         lin.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -66,24 +70,21 @@ public class login extends AppCompatActivity
                 map.put("password",password);
 
 
-                Call<ResponseBody> call = RetrofitClient
+                Call<User> call = RetrofitClient
                         .getInstance()
                         .getApi()
                         .loginUser(map);
 
-                call.enqueue(new Callback<ResponseBody>() {
+                call.enqueue(new Callback<User>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    public void onResponse(Call<User> call, Response<User> response) {
 
                         if (response.isSuccessful()) {
-                            try {
-                                String s = response.body().string();
-                                Toast.makeText(login.this, s, Toast.LENGTH_SHORT).show();
-                                Intent it = new Intent(login.this, drawer.class);
-                                startActivity(it);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            String s = response.body().getToken();
+                            token[0] = response.body().getToken();
+                            Toast.makeText(login.this, s, Toast.LENGTH_SHORT).show();
+                            Intent it = new Intent(login.this, MainActivity.class);
+                            startActivity(it);
                         }
                         else {
                             try {
@@ -98,7 +99,7 @@ public class login extends AppCompatActivity
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    public void onFailure(Call<User> call, Throwable t) {
                         Toast.makeText(login.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
