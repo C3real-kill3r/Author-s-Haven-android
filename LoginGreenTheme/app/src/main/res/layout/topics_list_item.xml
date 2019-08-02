@@ -3,7 +3,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view_outer"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="140dp"
     android:layout_gravity="center"
     card_view:cardBackgroundColor="@android:color/transparent"
     card_view:cardCornerRadius="0dp"
@@ -31,19 +31,21 @@
                     android:padding="1dp">
 
                     <TextView
-                        android:id="@+id/phn"
+                        android:id="@+id/ttle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Phone number: "
+                        android:text="Title: "
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/phone"
+                        android:id="@+id/edttitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/phn"
+                        android:layout_toRightOf="@+id/ttle"
                         android:padding="3dp"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
                         android:textColor="@color/white" />
                 </RelativeLayout>
 
@@ -53,66 +55,23 @@
                     android:padding="1dp">
 
                     <TextView
-                        android:id="@+id/loc"
+                        android:id="@+id/dec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location: "
+                        android:text="Description: "
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/location"
+                        android:id="@+id/editdescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/loc"
+                        android:layout_toRightOf="@id/dec"
                         android:textColor="@color/white"
                         android:textSize="17sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="1dp">
-
-                    <TextView
-                        android:id="@+id/dob"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Date of Birth: "
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/date_of_birth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/dob"
-                        android:padding="3dp"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="1dp">
-
-                    <TextView
-                        android:id="@+id/ntl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nationality: "
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/nationality"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/ntl"
-                        android:padding="3dp"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
 
             </LinearLayout>
         </RelativeLayout>

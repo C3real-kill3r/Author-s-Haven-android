@@ -17,7 +17,7 @@
                 android:id="@+id/rellay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/grad"
+                android:background="@drawable/gradient"
                 android:paddingBottom="20dp">
 
                 <RelativeLayout
@@ -73,6 +73,18 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_edit" />
+
+                <ImageView
+                    android:id="@+id/savprofile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_save"
+                    android:visibility="invisible" />
             </RelativeLayout>
 
 
@@ -103,18 +115,31 @@
                             android:textColor="@color/headings"
                             android:textSize="13sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="Kenyan"
-                            android:textColor="#000000"
-                            android:textSize="18sp" />
+                        <ViewSwitcher
+                            android:id="@+id/nationality_view_switcher"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:text="Kenyan"
+                                android:textColor="#000000"
+                                android:textSize="18sp" />
+
+                            <EditText
+                                android:id="@+id/edtnationality"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="Enter Nationality"
+                                android:textSize="18sp"/>
+                        </ViewSwitcher>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="1dp"
                             android:background="@color/grey" />
                     </LinearLayout>
 
@@ -142,7 +167,7 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="10dp"
                             android:background="@color/grey" />
                     </LinearLayout>
 
@@ -226,7 +251,7 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="1dp"
                             android:background="@color/grey" />
                     </LinearLayout>
 
@@ -282,7 +307,7 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="10dp"
                             android:background="@color/grey" />
                     </LinearLayout>
                 </LinearLayout>

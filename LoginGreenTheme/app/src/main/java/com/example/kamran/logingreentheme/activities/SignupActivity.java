@@ -1,4 +1,4 @@
-package com.example.kamran.logingreentheme;
+package com.example.kamran.logingreentheme.activities;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kamran.logingreentheme.R;
+import com.example.kamran.logingreentheme.RetrofitClient;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -17,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class signup extends AppCompatActivity
+public class SignupActivity extends AppCompatActivity
 {
     EditText edtemail, edtpassword, edtusername;
     TextView lin,sup;
@@ -45,7 +48,7 @@ public class signup extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent it = new Intent(signup.this, MainActivity.class);
+                Intent it = new Intent(SignupActivity.this, MainActivity.class);
                 startActivity(it);
             }
         });
@@ -100,8 +103,8 @@ public class signup extends AppCompatActivity
                 if (response.isSuccessful()) {
                     try {
                         String s = response.body().string();
-                        Toast.makeText(signup.this, s, Toast.LENGTH_SHORT).show();
-                        Intent it = new Intent(signup.this, login.class);
+                        Toast.makeText(SignupActivity.this, s, Toast.LENGTH_SHORT).show();
+                        Intent it = new Intent(SignupActivity.this, LoginActivity.class);
                         startActivity(it);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -109,9 +112,9 @@ public class signup extends AppCompatActivity
                 }
                 else {
                     try {
-                        Toast.makeText(signup.this, response.errorBody().string(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignupActivity.this, response.errorBody().string(), Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
-                        Toast.makeText(signup.this, "Error: Unknown ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignupActivity.this, "Error: Unknown ", Toast.LENGTH_LONG).show();
                         e.printStackTrace();
                     }
                 }
@@ -121,7 +124,7 @@ public class signup extends AppCompatActivity
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(signup.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(SignupActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

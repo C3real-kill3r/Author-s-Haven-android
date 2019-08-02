@@ -1,4 +1,4 @@
-package com.example.kamran.logingreentheme;
+package com.example.kamran.logingreentheme.activities;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kamran.logingreentheme.R;
+import com.example.kamran.logingreentheme.RetrofitClient;
 import com.example.kamran.logingreentheme.model.User;
 
 import java.io.IOException;
@@ -18,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class login extends AppCompatActivity
+public class LoginActivity extends AppCompatActivity
 {
     EditText pswd,usrusr;
     TextView sup,lin;
@@ -82,15 +84,15 @@ public class login extends AppCompatActivity
                         if (response.isSuccessful()) {
                             String s = response.body().getToken();
                             token[0] = response.body().getToken();
-                            Toast.makeText(login.this, s, Toast.LENGTH_SHORT).show();
-                            Intent it = new Intent(login.this, MainActivity.class);
+                            Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
+                            Intent it = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(it);
                         }
                         else {
                             try {
-                                Toast.makeText(login.this, "Error: " + response.errorBody().string(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Error: " + response.errorBody().string(), Toast.LENGTH_LONG).show();
                             } catch (IOException e) {
-                                Toast.makeText(login.this, "Error: Unknown ", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Error: Unknown ", Toast.LENGTH_LONG).show();
                                 e.printStackTrace();
                             }
                         }
@@ -100,7 +102,7 @@ public class login extends AppCompatActivity
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(login.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -110,7 +112,7 @@ public class login extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Intent it = new Intent(login.this, signup.class);
+                Intent it = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(it);
             }
         });
