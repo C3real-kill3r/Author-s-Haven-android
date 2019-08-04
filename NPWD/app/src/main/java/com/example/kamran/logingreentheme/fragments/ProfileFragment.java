@@ -48,7 +48,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void getMyProfile() {
-        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJCcnlieiIsImVtYWlsIjoiYnJ5YnppQGdtYWlsLmNvbSIsImlhdCI6MTU2NDgwOTE4OSwiZXhwIjoxNTY0ODIzNTg5fQ.NLN90yFPYcD58-nKVQjaNKFQsi0CY3XAREiBZ0rmFLY";
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJCcnlieiIsImVtYWlsIjoiYnJ5YnppQGdtYWlsLmNvbSIsImlhdCI6MTU2NDg5NjYyMSwiZXhwIjoxNTY0OTExMDIxfQ.gKXC0Ij5Uh-5V7jv6tQc0hmXliFQSxLNsoSMllaAXLU";
         Call<List<Profile>> call = RetrofitClient
                 .getInstance()
                 .getApi()
