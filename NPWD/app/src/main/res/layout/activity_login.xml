@@ -27,7 +27,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:background="#00FFFEFE"
-                    android:src="@drawable/usrusr" />
+                    android:src="@drawable/message" />
 
                 <EditText
                     android:id="@+id/usrusr"
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:hint="Username"
+                    android:hint="Email"
                     android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#fff"

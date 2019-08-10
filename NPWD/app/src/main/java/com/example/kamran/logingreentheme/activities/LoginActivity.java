@@ -87,8 +87,11 @@ public class LoginActivity extends AppCompatActivity {
                             preferences.edit().putString("TOKEN",s).apply();
                             preferences.edit().putString("USERNAME", username).apply();
                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            Intent it = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(it);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish();
                         } else {
                             try {
                                 Toast.makeText(LoginActivity.this, "Error: " + response.errorBody().string(), Toast.LENGTH_LONG).show();

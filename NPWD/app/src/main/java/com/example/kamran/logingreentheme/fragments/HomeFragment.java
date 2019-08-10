@@ -1,6 +1,7 @@
 package com.example.kamran.logingreentheme.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.kamran.logingreentheme.R;
 import com.example.kamran.logingreentheme.RetrofitClient;
+import com.example.kamran.logingreentheme.activities.LoginActivity;
 import com.example.kamran.logingreentheme.adapters.TopicsAdapter;
 import com.example.kamran.logingreentheme.model.Topic;
 
@@ -69,6 +71,10 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
                 if (!response.isSuccessful()){
                     textViewResult.setText("code: " + response.code());
+                    if (response.code() == 403){
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                    }
                     return;
                 }
                 topics = new ArrayList<>(response.body());
@@ -76,7 +82,6 @@ public class HomeFragment extends Fragment {
                 topics_recycler_view.setAdapter(topicsAdapter);
                 DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
                 topics_recycler_view.addItemDecoration(itemDecoration);
-                Toast.makeText(getActivity(), "success", Toast.LENGTH_LONG).show();
 
             }
 

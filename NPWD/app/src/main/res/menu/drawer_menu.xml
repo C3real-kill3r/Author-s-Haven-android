@@ -23,6 +23,10 @@
             android:id="@+id/profile"
             android:icon="@drawable/ic_baseline_account_24px"
             android:title="@string/profile" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_baseline_exit_24px"
+            android:title="@string/logout" />
     </group>
 
     <item android:title="More">
@@ -35,10 +39,6 @@
                 android:id="@+id/about"
                 android:icon="@drawable/ic_baseline_activity_24px"
                 android:title="about" />
-            <item
-                android:id="@+id/logout"
-                android:icon="@drawable/ic_baseline_exit_24px"
-                android:title="@string/logout" />
         </menu>
     </item>
 </menu>

@@ -1,6 +1,7 @@
 package com.example.kamran.logingreentheme.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -74,7 +75,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.logout:
-                Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
+                SharedPreferences preferences = getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+                preferences.edit().putString("TOKEN","invalid").commit();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(this, "Successfully Logged out", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.search:
                 Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,7 @@
 package com.example.kamran.logingreentheme.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.widget.ViewSwitcher;
 
 import com.example.kamran.logingreentheme.R;
 import com.example.kamran.logingreentheme.RetrofitClient;
+import com.example.kamran.logingreentheme.activities.MainActivity;
 import com.example.kamran.logingreentheme.model.Profile;
 
 import java.util.HashMap;
@@ -31,7 +33,8 @@ public class ProfileFragment extends Fragment {
             ntnlity, dob, sex, phn, ident, disab, cause, location, secondname;
     private EditText edtnationality,
             edtdateob, editsex, editphone, editidentity,
-            editdisability, editcause, editlocation, editsecondname, editfirstname;
+            editdisability, editcause, editlocation, editsecondname,
+            editemail, editfirstname;
     private ImageView edticon, saveicon;
 
     @Nullable
@@ -70,6 +73,7 @@ public class ProfileFragment extends Fragment {
         editdisability = view.findViewById(R.id.editdisability);
         editcause = view.findViewById(R.id.editcause);
         editlocation = view.findViewById(R.id.editlocation);
+        editemail = view.findViewById(R.id.editemail);
 
         edticon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +81,7 @@ public class ProfileFragment extends Fragment {
                 ViewSwitcher switcher = view.findViewById(R.id.my_switcher);
                 ViewSwitcher firstname = view.findViewById(R.id.frstname);
                 ViewSwitcher secondname = view.findViewById(R.id.scndname);
+                ViewSwitcher email = view.findViewById(R.id.email);
                 ViewSwitcher location = view.findViewById(R.id.location_view_switcher);
                 ViewSwitcher nationality = view.findViewById(R.id.nationality_view_switcher);
                 ViewSwitcher dob = view.findViewById(R.id.edtdob);
@@ -96,6 +101,7 @@ public class ProfileFragment extends Fragment {
                 location.showNext();
                 firstname.showNext();
                 secondname.showNext();
+                email.showNext();
                 edticon.setVisibility(View.INVISIBLE);
                 saveicon.setVisibility(View.VISIBLE);
             }
@@ -107,6 +113,7 @@ public class ProfileFragment extends Fragment {
                 ViewSwitcher switcher = view.findViewById(R.id.my_switcher);
                 ViewSwitcher firstname = view.findViewById(R.id.frstname);
                 ViewSwitcher secondname = view.findViewById(R.id.scndname);
+                ViewSwitcher email = view.findViewById(R.id.email);
                 ViewSwitcher location = view.findViewById(R.id.location_view_switcher);
                 ViewSwitcher nationality = view.findViewById(R.id.nationality_view_switcher);
                 ViewSwitcher dob = view.findViewById(R.id.edtdob);
@@ -127,10 +134,12 @@ public class ProfileFragment extends Fragment {
                 location.showPrevious();
                 firstname.showPrevious();
                 secondname.showPrevious();
+                email.showPrevious();
                 edticon.setVisibility(View.VISIBLE);
                 saveicon.setVisibility(View.INVISIBLE);
 
                 editProfile();
+                getMyProfile();
             }
         });
 
@@ -138,16 +147,17 @@ public class ProfileFragment extends Fragment {
     }
 
     private void editProfile() {
-        String nationality = edtnationality.getText().toString().trim();
-        String dob = edtdateob.getText().toString().trim();
-        String sex = editsex.getText().toString().trim();
-        String phone = editphone.getText().toString().trim();
-        String id = editidentity.getText().toString().trim();
-        String disability = editdisability.getText().toString().trim();
-        String cause = editcause.getText().toString().trim();
-        String location = editlocation.getText().toString().trim();
-        String firstname = editfirstname.getText().toString().trim();
-        String secondname = editsecondname.getText().toString().trim();
+        String nationality = edtnationality.getText().toString().toUpperCase().trim();
+        String dob = edtdateob.getText().toString().toUpperCase().trim();
+        String sex = editsex.getText().toString().toUpperCase().trim();
+        String email = editemail.getText().toString().trim();
+        String phone = editphone.getText().toString().toUpperCase().trim();
+        String id = editidentity.getText().toString().toUpperCase().trim();
+        String disability = editdisability.getText().toString().toUpperCase().trim();
+        String cause = editcause.getText().toString().toUpperCase().trim();
+        String location = editlocation.getText().toString().toUpperCase().trim();
+        String firstname = editfirstname.getText().toString().toUpperCase().trim();
+        String secondname = editsecondname.getText().toString().toUpperCase().trim();
 
         HashMap<String, String> map = new HashMap<>();
         map.put("phone", phone);
@@ -155,6 +165,7 @@ public class ProfileFragment extends Fragment {
         map.put("date_of_birth", dob);
         map.put("firstname", firstname);
         map.put("lastname", secondname);
+        map.put("email", email);
         map.put("location", location);
         map.put("nationality", nationality);
         map.put("sex", sex);
@@ -175,6 +186,8 @@ public class ProfileFragment extends Fragment {
                     Toast.makeText(getActivity(), "No changes made", Toast.LENGTH_LONG).show();
                 }
                 Toast.makeText(getActivity(), "success", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
             }
 
             @Override
