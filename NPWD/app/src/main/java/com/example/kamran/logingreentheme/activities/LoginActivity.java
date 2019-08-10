@@ -1,6 +1,8 @@
 package com.example.kamran.logingreentheme.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,13 +22,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity
-{
-    EditText pswd,usrusr;
-    TextView sup,lin;
+public class LoginActivity extends AppCompatActivity {
+    EditText pswd, usrusr;
+    TextView sup, lin;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -41,35 +42,31 @@ public class LoginActivity extends AppCompatActivity
         usrusr.setTypeface(custom_font);
         pswd.setTypeface(custom_font);
 
-        final String[] token = new String[1];
-
-        lin.setOnClickListener(new View.OnClickListener()
-        {
+        lin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 loginUser();
             }
 
             private void loginUser() {
-                String email = usrusr.getText().toString().trim();
+                final String email = usrusr.getText().toString().trim();
                 String password = pswd.getText().toString().trim();
 
-                if (email.isEmpty()){
+                if (email.isEmpty()) {
                     usrusr.setError("Email is required");
                     usrusr.requestFocus();
                     return;
                 }
 
-                if(password.isEmpty()){
-                    pswd.setError("Username is required");
+                if (password.isEmpty()) {
+                    pswd.setError("Password is required");
                     pswd.requestFocus();
                     return;
                 }
 
                 HashMap<String, String> map = new HashMap<>();
-                map.put("email",email);
-                map.put("password",password);
+                map.put("email", email);
+                map.put("password", password);
 
 
                 Call<User> call = RetrofitClient
@@ -83,12 +80,16 @@ public class LoginActivity extends AppCompatActivity
 
                         if (response.isSuccessful()) {
                             String s = response.body().getToken();
-                            token[0] = response.body().getToken();
-                            Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
+                            String email = response.body().getEmail();
+                            String username = response.body().getUsername();
+                            SharedPreferences preferences = LoginActivity.this.getSharedPreferences("MY_APP",Context.MODE_PRIVATE);
+                            preferences.edit().putString("EMAIL", email).apply();
+                            preferences.edit().putString("TOKEN",s).apply();
+                            preferences.edit().putString("USERNAME", username).apply();
+                            Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                             Intent it = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(it);
-                        }
-                        else {
+                        } else {
                             try {
                                 Toast.makeText(LoginActivity.this, "Error: " + response.errorBody().string(), Toast.LENGTH_LONG).show();
                             } catch (IOException e) {
@@ -107,11 +108,9 @@ public class LoginActivity extends AppCompatActivity
                 });
             }
         });
-        sup.setOnClickListener(new View.OnClickListener()
-        {
+        sup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent it = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(it);
             }

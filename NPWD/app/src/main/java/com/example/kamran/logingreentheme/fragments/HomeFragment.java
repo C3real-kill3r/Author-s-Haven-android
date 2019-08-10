@@ -1,5 +1,7 @@
 package com.example.kamran.logingreentheme.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -54,11 +56,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void listTopics() {
-//        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJCcnlieiIsImVtYWlsIjoiYnJ5YnppQGdtYWlsLmNvbSIsImlhdCI6MTU2NDc2OTA1NSwiZXhwIjoxNTY0NzgzNDU1fQ.HLEN8pJZlTgdXsrHaLP74Myn2DORgBA1i6LN_3E8teg";
+        SharedPreferences preferences = getActivity().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+        String retrivedToken  = preferences.getString("TOKEN",null);//second parameter default value
+        String token = retrivedToken;
         Call<List<Topic>> call = RetrofitClient
                 .getInstance()
                 .getApi()
-                .getTopics();
+                .getTopics(token);
 
         call.enqueue(new Callback<List<Topic>>() {
             @Override

@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Author {
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -15,6 +16,9 @@ public class Author {
     @SerializedName("phone")
     @Expose
     private String phone;
+    @SerializedName("email")
+    @Expose
+    private String email;
     @SerializedName("location")
     @Expose
     private String location;
@@ -36,9 +40,12 @@ public class Author {
     @SerializedName("sex")
     @Expose
     private String sex;
-    @SerializedName("disabilities")
+    @SerializedName("disability")
     @Expose
-    private List<Disability> disabilities = null;
+    private String disability;
+    @SerializedName("cause")
+    @Expose
+    private String cause;
 
     public Integer getId() {
         return id;
@@ -62,6 +69,14 @@ public class Author {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getLocation() {
@@ -120,11 +135,19 @@ public class Author {
         this.sex = sex;
     }
 
-    public List<Disability> getDisabilities() {
-        return disabilities;
+    public String getDisability() {
+        return disability;
     }
 
-    public void setDisabilities(List<Disability> disabilities) {
-        this.disabilities = disabilities;
+    public void setDisability(String disability) {
+        this.disability = disability;
+    }
+
+    public String getCause() {
+        return cause;
+    }
+
+    public void setCause(String cause) {
+        this.cause = cause;
     }
 }

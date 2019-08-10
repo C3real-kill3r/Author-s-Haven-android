@@ -1,5 +1,7 @@
 package com.example.kamran.logingreentheme.activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,6 +10,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kamran.logingreentheme.R;
@@ -29,6 +33,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         mToggle.syncState();
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView drawerUser = headerView.findViewById(R.id.usHeader);
+        TextView drawerAccount = headerView.findViewById(R.id.emHeader);
+        SharedPreferences preferences = getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+        String retrievedEmail  = preferences.getString("EMAIL",null);
+        String retrievedUsername = preferences.getString("USERNAME", null);
+        drawerAccount.setText(retrievedEmail);
+        drawerUser.setText(retrievedUsername);
+
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
@@ -54,6 +68,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.settings:
+                Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.event:
+                Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.search:
                 Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
                 break;
         }

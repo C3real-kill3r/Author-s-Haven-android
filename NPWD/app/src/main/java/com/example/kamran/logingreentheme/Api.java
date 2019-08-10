@@ -14,6 +14,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface Api {
 
@@ -36,7 +37,13 @@ public interface Api {
     @GET("profiles/mine/")
     Call<List<Profile>> myProfile(@Header("Authorization") String token);
 
+    @FormUrlEncoded
+    @PUT("profiles/mine/")
+    Call<Profile> editmyProfile(
+            @Header("Authorization") String token,
+            @FieldMap HashMap<String, String> data);
+
     @GET("topics/")
-    Call<List<Topic>> getTopics();
+    Call<List<Topic>> getTopics(@Header("Authorization") String token);
 
 }

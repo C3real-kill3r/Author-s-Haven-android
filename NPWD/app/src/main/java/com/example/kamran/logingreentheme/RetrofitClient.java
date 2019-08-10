@@ -1,5 +1,11 @@
 package com.example.kamran.logingreentheme;
 
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.example.kamran.logingreentheme.activities.LoginActivity;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -14,11 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "http://10.0.2.2:8000/api/";
+    private static final String BASE_URL = "https://ncpwd.herokuapp.com/api/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
 
-    private RetrofitClient(){
+    private RetrofitClient() {
 
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -29,16 +35,13 @@ public class RetrofitClient {
                     @Override
                     public Response intercept(@NotNull Chain chain) throws IOException {
                         Request original = chain.request();
-                        if (original.url().encodedPath().contains("/users/LoginActivity/") && original.method().equals("POST")
+                        if (original.url().encodedPath().contains("/users/login/") && original.method().equals("POST")
                                 ||
-                                original.url().encodedPath().contains("/users/") && original.method().equals("POST") ||
-                                original.url().encodedPath().contains("/topics/") && original.method().equals("GET")){
+                                original.url().encodedPath().contains("/users/") && original.method().equals("POST")) {
                             return chain.proceed(original);
-                        }
-                        else {
-                            System.out.println(original.headers());
+                        } else {
                             Request newRequest = original.newBuilder()
-                                    .header("Something", "secret-key")
+                                    .header("User", "cedic")
                                     .build();
                             return chain.proceed(newRequest);
                         }
@@ -54,14 +57,14 @@ public class RetrofitClient {
                 .build();
     }
 
-    public static synchronized RetrofitClient getInstance(){
-        if(mInstance == null ){
+    public static synchronized RetrofitClient getInstance() {
+        if (mInstance == null) {
             mInstance = new RetrofitClient();
         }
         return mInstance;
     }
 
-    public Api getApi(){
+    public Api getApi() {
         return retrofit.create(Api.class);
     }
 }
