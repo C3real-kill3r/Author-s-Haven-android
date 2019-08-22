@@ -1,508 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshProfile"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="900dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="900dp"
+            android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/rellay"
+
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/headings"
-                android:paddingBottom="20dp">
+                android:layout_height="match_parent">
 
                 <RelativeLayout
-                    android:id="@+id/imgUser"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rellay"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/circle_border">
+                    android:background="@drawable/grad"
+                    android:paddingBottom="20dp">
 
-                    <ImageView
-                        android:layout_width="115dp"
-                        android:layout_height="115dp"
-                        android:layout_margin="9dp"
-                        android:adjustViewBounds="true"
-                        android:background="@drawable/circle"
-                        android:padding="3dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/prof" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:id="@+id/names"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imgUser"
-                    android:layout_centerHorizontal="true">
-
-                    <ViewSwitcher
-                        android:id="@+id/frstname"
+                    <RelativeLayout
+                        android:id="@+id/imgUser"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        >
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/circle_border">
+
+                        <ImageView
+                            android:id="@+id/profimage"
+                            android:layout_width="115dp"
+                            android:layout_height="115dp"
+                            android:layout_margin="9dp"
+                            android:adjustViewBounds="true"
+                            android:background="@drawable/circle"
+                            android:padding="3dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/prof" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/names"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgUser"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center">
 
                         <TextView
                             android:id="@+id/firstname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="18sp"
                             android:layout_marginTop="1sp"
                             android:fontFamily="sans-serif-light"
-                            android:text="John"
+                            android:padding="2sp"
                             android:textColor="@color/white"
-                            android:textSize="32sp" />
-
-                        <EditText
-                            android:id="@+id/editfirstname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="first name"
-                            android:textSize="18sp" />
-                    </ViewSwitcher>
-
-                    <ViewSwitcher
-                        android:id="@+id/scndname"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true">
-
-                        <TextView
-                            android:id="@+id/secondname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="8sp"
-                            android:layout_marginTop="1sp"
-                            android:layout_toRightOf="@+id/firstname"
-                            android:fontFamily="sans-serif-light"
-                            android:text="Doe"
-                            android:textColor="@color/white"
-                            android:textSize="32sp" />
-
-                        <EditText
-                            android:id="@+id/editsecondname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="second name"
-                            android:textSize="18sp" />
-                    </ViewSwitcher>
-                </LinearLayout>
-
-                <ViewSwitcher
-                    android:id="@+id/email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/names"
-                    android:layout_centerHorizontal="true">
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/names"
                         android:layout_marginTop="10sp"
                         android:fontFamily="sans-serif"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/white"
                         android:textSize="17sp" />
 
-                    <EditText
-                        android:id="@+id/editemail"
+                    <ViewSwitcher
+                        android:id="@+id/my_switcher"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="enter email"
-                        android:textSize="15sp" />
-                </ViewSwitcher>
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true">
 
-                <ViewSwitcher
-                    android:id="@+id/my_switcher"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true">
+                        <ImageView
+                            android:id="@+id/edtprofile"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_edit" />
 
-                    <ImageView
-                        android:id="@+id/edtprofile"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_edit" />
-
-                    <ImageView
-                        android:id="@+id/savprofile"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_save" />
-                </ViewSwitcher>
-            </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/savprofile"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_save" />
+                    </ViewSwitcher>
+                </RelativeLayout>
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/rellay"
-                android:background="@color/white">
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/rellay"
+                    android:background="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="30dp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nationality"
-                            android:textColor="@color/headings"
-                            android:textSize="13sp" />
 
-                        <ViewSwitcher
-                            android:id="@+id/nationality_view_switcher"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/ntnlity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-light"
-                                android:textColor="#000000"
-                                android:textSize="18sp" />
+                                android:text="Location"
+                                android:textColor="@color/headings"
+                                android:textSize="13sp" />
 
-                            <EditText
-                                android:id="@+id/edtnationality"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="Enter Nationality"
-                                android:textSize="18sp" />
-                        </ViewSwitcher>
+                            <ViewSwitcher
+                                android:id="@+id/location_view_switcher"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                        <View
+                                <TextView
+                                    android:id="@+id/location"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-light"
+                                    android:textColor="#000000"
+                                    android:textSize="18sp" />
+
+                                <EditText
+                                    android:id="@+id/editlocation"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Enter Location"
+                                    android:inputType="text"
+                                    android:textSize="18sp" />
+                            </ViewSwitcher>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="1dp"
+                                android:background="@color/grey" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="1dp"
-                            android:background="@color/grey" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Location"
-                            android:textColor="@color/headings"
-                            android:textSize="13sp" />
-
-                        <ViewSwitcher
-                            android:id="@+id/location_view_switcher"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/location"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-light"
-                                android:textColor="#000000"
-                                android:textSize="18sp" />
-
-                            <EditText
-                                android:id="@+id/editlocation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="Enter Location"
-                                android:textSize="18sp" />
-                        </ViewSwitcher>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="1dp"
-                            android:background="@color/grey" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Date of Birth"
-                            android:textColor="@color/headings"
-                            android:textSize="13sp" />
-
-                        <ViewSwitcher
-                            android:id="@+id/edtdob"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/dob"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-light"
-                                android:textColor="#000000"
-                                android:textSize="18sp" />
-
-                            <EditText
-                                android:id="@+id/edtdateob"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="1988-08-08"
-                                android:textSize="18sp" />
-                        </ViewSwitcher>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
                             android:layout_marginTop="10dp"
-                            android:background="@color/grey" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Gender"
-                            android:textColor="@color/headings"
-                            android:textSize="13sp" />
-
-                        <ViewSwitcher
-                            android:id="@+id/edtsex"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/sex"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-light"
-                                android:textColor="#000000"
-                                android:textSize="18sp" />
+                                android:text="Date of Birth"
+                                android:textColor="@color/headings"
+                                android:textSize="13sp" />
 
-                            <EditText
-                                android:id="@+id/editsex"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="Enter Sex"
-                                android:textSize="18sp" />
-                        </ViewSwitcher>
+                            <ViewSwitcher
+                                android:id="@+id/edtdob"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                        <View
+                                <TextView
+                                    android:id="@+id/dob"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-light"
+                                    android:textColor="#000000"
+                                    android:textSize="18sp" />
+
+                                <EditText
+                                    android:id="@+id/edtdateob"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="1988-08-08"
+                                    android:inputType="date"
+                                    android:textSize="18sp" />
+                            </ViewSwitcher>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/grey" />
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="15dp"
-                            android:background="@color/grey" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Phone Number"
-                            android:textColor="@color/headings"
-                            android:textSize="13sp" />
-
-                        <ViewSwitcher
-                            android:id="@+id/edtphn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/phn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-light"
-                                android:textColor="#000000"
-                                android:textSize="18sp" />
-
-                            <EditText
-                                android:id="@+id/editphone"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="Enter Phone Number"
-                                android:textSize="18sp" />
-                        </ViewSwitcher>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
                             android:layout_marginTop="10dp"
-                            android:background="@color/grey" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="National ID/ Passport"
-                            android:textColor="@color/headings"
-                            android:textSize="13sp" />
-
-                        <ViewSwitcher
-                            android:id="@+id/edtident"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/ident"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-light"
-                                android:textColor="#000000"
-                                android:textSize="18sp" />
+                                android:text="Gender"
+                                android:textColor="@color/headings"
+                                android:textSize="13sp" />
 
-                            <EditText
-                                android:id="@+id/editidentity"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="Enter Identity Number"
-                                android:textSize="18sp" />
-                        </ViewSwitcher>
+                            <ViewSwitcher
+                                android:id="@+id/edtsex"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                        <View
+                                <TextView
+                                    android:id="@+id/sex"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-light"
+                                    android:textColor="#000000"
+                                    android:textSize="18sp" />
+
+                                <EditText
+                                    android:id="@+id/editsex"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Enter Sex"
+                                    android:inputType="text"
+                                    android:textSize="18sp" />
+                            </ViewSwitcher>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@color/grey" />
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="10dp"
-                            android:background="@color/grey" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Disability"
-                            android:textColor="@color/headings"
-                            android:textSize="13sp" />
-
-                        <ViewSwitcher
-                            android:id="@+id/edtdisab"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/disab"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-light"
-                                android:text="Albino"
-                                android:textColor="#000000"
-                                android:textSize="18sp" />
+                                android:text="Phone Number"
+                                android:textColor="@color/headings"
+                                android:textSize="13sp" />
 
-                            <EditText
-                                android:id="@+id/editdisability"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="Enter Disability"
-                                android:textSize="18sp" />
+                            <ViewSwitcher
+                                android:id="@+id/edtphn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                        </ViewSwitcher>
+                                <TextView
+                                    android:id="@+id/phn"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-light"
+                                    android:textColor="#000000"
+                                    android:textSize="18sp" />
 
-                        <View
+                                <EditText
+                                    android:id="@+id/editphone"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Enter Phone Number"
+                                    android:inputType="phone"
+                                    android:textSize="18sp" />
+                            </ViewSwitcher>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/grey" />
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="10dp"
-                            android:background="@color/grey" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cause of Disability"
-                            android:textColor="@color/headings"
-                            android:textSize="13sp" />
-
-                        <ViewSwitcher
-                            android:id="@+id/edtcause"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/cause"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-light"
-                                android:textColor="#000000"
-                                android:textSize="18sp" />
+                                android:text="Blood Type"
+                                android:textColor="@color/headings"
+                                android:textSize="13sp" />
 
-                            <EditText
-                                android:id="@+id/editcause"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:hint="Enter Disability"
-                                android:textSize="18sp" />
-                        </ViewSwitcher>
+                            <ViewSwitcher
+                                android:id="@+id/edtident"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="10dp"
-                            android:background="@color/grey" />
+                                <TextView
+                                    android:id="@+id/ident"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-light"
+                                    android:textColor="#000000"
+                                    android:textSize="18sp" />
+
+                                <EditText
+                                    android:id="@+id/editidentity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Enter bloodtype"
+                                    android:inputType="text"
+                                    android:textSize="18sp" />
+                            </ViewSwitcher>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/grey" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
+
+
+                </RelativeLayout>
 
 
             </RelativeLayout>
-
-
-        </RelativeLayout>
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

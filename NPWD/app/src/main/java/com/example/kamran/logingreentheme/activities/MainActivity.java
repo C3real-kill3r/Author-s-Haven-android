@@ -1,6 +1,7 @@
 package com.example.kamran.logingreentheme.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kamran.logingreentheme.R;
+import com.example.kamran.logingreentheme.fragments.AboutFragment;
+import com.example.kamran.logingreentheme.fragments.DiscoverFragment;
+import com.example.kamran.logingreentheme.fragments.EventsFragment;
 import com.example.kamran.logingreentheme.fragments.HomeFragment;
 import com.example.kamran.logingreentheme.fragments.ProfileFragment;
 
@@ -66,23 +71,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new ProfileFragment()).commit();
                 break;
             case R.id.about:
-                Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new AboutFragment()).commit();
                 break;
             case R.id.settings:
                 Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.event:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new EventsFragment()).commit();
                 Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.logout:
-                SharedPreferences preferences = getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
-                preferences.edit().putString("TOKEN","invalid").commit();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-                Toast.makeText(this, "Successfully Logged out", Toast.LENGTH_SHORT).show();
+                final SharedPreferences preferences = getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.setTitle("Logout");
+                alert.setMessage("Do you want to logout?");
+
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        preferences.edit().putString("TOKEN","invalid").apply();
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                alert.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                            }
+                        });
+
+                alert.show();
                 break;
             case R.id.search:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new DiscoverFragment()).commit();
                 Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
                 break;
         }

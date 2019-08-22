@@ -12,39 +12,27 @@ public class Profile {
     @SerializedName("user")
     @Expose
     private Integer user;
-    @SerializedName("phone")
+    @SerializedName("username")
     @Expose
-    private String phone;
+    private String username;
     @SerializedName("email")
     @Expose
     private String email;
+    @SerializedName("phone")
+    @Expose
+    private String phone;
     @SerializedName("location")
     @Expose
     private String location;
-    @SerializedName("national_id")
-    @Expose
-    private String nationalId;
     @SerializedName("date_of_birth")
     @Expose
     private String dateOfBirth;
-    @SerializedName("nationality")
-    @Expose
-    private String nationality;
-    @SerializedName("firstname")
-    @Expose
-    private String firstname;
-    @SerializedName("lastname")
-    @Expose
-    private String lastname;
     @SerializedName("sex")
     @Expose
     private String sex;
-    @SerializedName("disability")
+    @SerializedName("blood_type")
     @Expose
-    private String disability;
-    @SerializedName("cause")
-    @Expose
-    private String cause;
+    private String bloodType;
 
     public Integer getId() {
         return id;
@@ -62,12 +50,12 @@ public class Profile {
         this.user = user;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -78,20 +66,20 @@ public class Profile {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getLocation() {
         return location;
     }
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getNationalId() {
-        return nationalId;
-    }
-
-    public void setNationalId(String nationalId) {
-        this.nationalId = nationalId;
     }
 
     public String getDateOfBirth() {
@@ -102,30 +90,6 @@ public class Profile {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
     public String getSex() {
         return sex;
     }
@@ -134,19 +98,11 @@ public class Profile {
         this.sex = sex;
     }
 
-    public String getDisability() {
-        return disability;
+    public String getBloodType() {
+        return bloodType;
     }
 
-    public void setDisability(String disability) {
-        this.disability = disability;
-    }
-
-    public String getCause() {
-        return cause;
-    }
-
-    public void setCause(String cause) {
-        this.cause = cause;
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
     }
 }

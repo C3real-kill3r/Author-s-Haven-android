@@ -32,7 +32,6 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ProfilesAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.nationality.setText(profiles.get(i).getNationality());
         viewHolder.date_of_birth.setText(profiles.get(i).getDateOfBirth());
         viewHolder.location.setText(profiles.get(i).getLocation());
         viewHolder.phone.setText(profiles.get(i).getPhone());

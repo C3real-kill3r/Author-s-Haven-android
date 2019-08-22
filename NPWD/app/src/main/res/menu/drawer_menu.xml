@@ -24,21 +24,21 @@
             android:icon="@drawable/ic_baseline_account_24px"
             android:title="@string/profile" />
         <item
-            android:id="@+id/logout"
-            android:icon="@drawable/ic_baseline_exit_24px"
-            android:title="@string/logout" />
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_baseline_settings_20px"
+            android:title="@string/settings" />
     </group>
 
     <item android:title="More">
         <menu>
             <item
-                android:id="@+id/settings"
-                android:icon="@drawable/ic_baseline_settings_20px"
-                android:title="@string/settings" />
-            <item
                 android:id="@+id/about"
                 android:icon="@drawable/ic_baseline_activity_24px"
                 android:title="about" />
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_baseline_exit_24px"
+                android:title="@string/logout" />
         </menu>
     </item>
 </menu>

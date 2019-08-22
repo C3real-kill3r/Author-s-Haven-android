@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kamran.logingreentheme.R;
 import com.example.kamran.logingreentheme.RetrofitClient;
@@ -29,13 +29,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
 
     ArrayList<Topic> topics = new ArrayList<>();
     private TopicsAdapter topicsAdapter;
     private RecyclerView topics_recycler_view;
     private TextView textViewResult;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -44,7 +45,10 @@ public class HomeFragment extends Fragment {
         topics_recycler_view = view.findViewById(R.id.topics_recycler_view);
         topicsAdapter = new TopicsAdapter(getContext(), topics);
         topics_recycler_view.setAdapter(topicsAdapter);
-        topics_recycler_view.setLayoutManager(new LinearLayoutManager(getActivity()));
+        topics_recycler_view.setLayoutManager(new LinearLayoutManager(getActivity()) );
+        swipeRefreshLayout = view.findViewById(R.id.refresh);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        getActivity().setTitle("Home");
         return view;
     }
 
@@ -59,7 +63,7 @@ public class HomeFragment extends Fragment {
 
     private void listTopics() {
         SharedPreferences preferences = getActivity().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
-        String retrivedToken  = preferences.getString("TOKEN",null);//second parameter default value
+        String retrivedToken = preferences.getString("TOKEN", null);//second parameter default value
         String token = retrivedToken;
         Call<List<Topic>> call = RetrofitClient
                 .getInstance()
@@ -69,9 +73,9 @@ public class HomeFragment extends Fragment {
         call.enqueue(new Callback<List<Topic>>() {
             @Override
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
-                if (!response.isSuccessful()){
+                if (!response.isSuccessful()) {
                     textViewResult.setText("code: " + response.code());
-                    if (response.code() == 403){
+                    if (response.code() == 403) {
                         Intent intent = new Intent(getActivity(), LoginActivity.class);
                         startActivity(intent);
                     }
@@ -91,5 +95,12 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void onRefresh() {
+        swipeRefreshLayout.setRefreshing(true);
+        listTopics();
     }
 }

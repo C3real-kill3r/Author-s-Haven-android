@@ -2,9 +2,13 @@ package com.example.kamran.logingreentheme.activities;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -101,14 +105,7 @@ public class SignupActivity extends AppCompatActivity
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
                 if (response.isSuccessful()) {
-                    try {
-                        String s = response.body().string();
-                        Toast.makeText(SignupActivity.this, s, Toast.LENGTH_SHORT).show();
-                        Intent it = new Intent(SignupActivity.this, LoginActivity.class);
-                        startActivity(it);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    showCustomDialog();
                 }
                 else {
                     try {
@@ -127,6 +124,31 @@ public class SignupActivity extends AppCompatActivity
                 Toast.makeText(SignupActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+    private void showCustomDialog() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.my_dialog, viewGroup, false);
+
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Button btnAdd1 = dialogView.findViewById(R.id.buttonOk);
+        btnAdd1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
 }

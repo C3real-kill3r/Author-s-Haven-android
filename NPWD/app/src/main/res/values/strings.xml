@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NCPWD</string>
+    <string name="app_name">H-digest</string>
     <string name="text">Welcome</string>
     <string name="send">Send</string>
     <string name="button">Send</string>
@@ -14,4 +14,22 @@
     <string name="email">johndoe@gmail.com</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="country_prompt">Choose a country</string>
+    <string-array name="country_arrays">
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Kenya</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+    <string name="motto">Health is Wealth</string>
+    <string name="vision">A barrier free society for Persons with Disabilities.</string>
+    <string name="mission">Donating blood has benefits for your emotional and physical health. According to a report by the Mental Health Foundation, helping others can:\n\n &#8226; reduce stress\n &#8226; improve your emotional well-being \n &#8226; benefit your physical health</string>
+    <string name="background">The National Council for Persons with Disabilities is a state corporation established by an Act of Parliament; the Persons with Disabilities Act No. 14 of 2003 and set up in November 2004. The Council representation is drawn from key government Ministries and organizations of/for persons with disabilities.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
