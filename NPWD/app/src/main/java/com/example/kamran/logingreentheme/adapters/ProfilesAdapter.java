@@ -32,9 +32,9 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ProfilesAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.date_of_birth.setText(profiles.get(i).getDateOfBirth());
-        viewHolder.location.setText(profiles.get(i).getLocation());
-        viewHolder.phone.setText(profiles.get(i).getPhone());
+        viewHolder.date_of_birth.setText(profiles.get(i).getUsername());
+        viewHolder.location.setText(profiles.get(i).getUsername());
+        viewHolder.profimage.setText(profiles.get(i).getImage());
 
     }
 
@@ -45,11 +45,12 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView phone, location, date_of_birth, nationality;
+        private TextView phone, location, date_of_birth, nationality, profimage;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             phone = itemView.findViewById(R.id.phone);
+            profimage = itemView.findViewById(R.id.profimage);
             location = itemView.findViewById(R.id.location);
             date_of_birth = itemView.findViewById(R.id.date_of_birth);
             nationality = itemView.findViewById(R.id.nationality);

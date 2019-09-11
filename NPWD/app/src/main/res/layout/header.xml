@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     android:background="@drawable/grad"
+    android:layout_centerVertical="true"
     android:padding="20dp">
 
-    <ImageView
+    <com.pkmmte.view.CircularImageView
         android:id="@+id/imgHeader"
+        android:radius="100dp"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/profile_circular_border_image_view"
@@ -20,6 +22,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:layout_marginLeft="10sp"
         android:textFontWeight="700"
         android:layout_marginTop="5dp" />
     <TextView

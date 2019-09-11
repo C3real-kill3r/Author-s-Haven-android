@@ -6,49 +6,15 @@ import com.google.gson.annotations.SerializedName;
 
 
 public class Profile {
-    @SerializedName("id")
-    @Expose
-    private Integer id;
-    @SerializedName("user")
-    @Expose
-    private Integer user;
     @SerializedName("username")
     @Expose
     private String username;
-    @SerializedName("email")
+    @SerializedName("bio")
     @Expose
-    private String email;
-    @SerializedName("phone")
+    private String bio;
+    @SerializedName("image")
     @Expose
-    private String phone;
-    @SerializedName("location")
-    @Expose
-    private String location;
-    @SerializedName("date_of_birth")
-    @Expose
-    private String dateOfBirth;
-    @SerializedName("sex")
-    @Expose
-    private String sex;
-    @SerializedName("blood_type")
-    @Expose
-    private String bloodType;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUser() {
-        return user;
-    }
-
-    public void setUser(Integer user) {
-        this.user = user;
-    }
+    private String image;
 
     public String getUsername() {
         return username;
@@ -58,51 +24,20 @@ public class Profile {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public String getBio() {
+        return bio;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getImage() {
+        return image;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getBloodType() {
-        return bloodType;
-    }
-
-    public void setBloodType(String bloodType) {
-        this.bloodType = bloodType;
-    }
 }

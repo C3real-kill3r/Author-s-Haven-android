@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.kamran.logingreentheme.R;
 import com.example.kamran.logingreentheme.RetrofitClient;
-import com.example.kamran.logingreentheme.model.User;
+import com.example.kamran.logingreentheme.model.Person;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,6 +21,7 @@ import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Body;
 
 public class LoginActivity extends AppCompatActivity {
     EditText pswd, usrusr;
@@ -64,28 +65,33 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                HashMap<String, String> map = new HashMap<>();
-                map.put("email", email);
-                map.put("password", password);
+                HashMap<String, String> user = new HashMap<>();
+                user.put("email", email);
+                user.put("password", password);
+
+                HashMap<String, Object> usr = new HashMap<>();
+                usr.put("user", user);
 
 
-                Call<User> call = RetrofitClient
+                Call<Person> call = RetrofitClient
                         .getInstance()
                         .getApi()
-                        .loginUser(map);
+                        .loginUser(usr);
 
-                call.enqueue(new Callback<User>() {
+                call.enqueue(new Callback<Person>() {
                     @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
+                    public void onResponse(Call<Person> call, Response<Person> response) {
 
                         if (response.isSuccessful()) {
-                            String s = response.body().getToken();
-                            String email = response.body().getEmail();
-                            String username = response.body().getUsername();
+                            String s = response.body().getUser().getToken();
+                            String email = response.body().getUser().getEmail();
+                            String username = response.body().getUser().getUsername();
+                            String profImage = response.body().getUser().getImage();
                             SharedPreferences preferences = LoginActivity.this.getSharedPreferences("MY_APP",Context.MODE_PRIVATE);
                             preferences.edit().putString("EMAIL", email).apply();
                             preferences.edit().putString("TOKEN",s).apply();
                             preferences.edit().putString("USERNAME", username).apply();
+                            preferences.edit().putString("profImage", profImage).apply();
                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -105,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<User> call, Throwable t) {
+                    public void onFailure(Call<Person> call, Throwable t) {
                         Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });

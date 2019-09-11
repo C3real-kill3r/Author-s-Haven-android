@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "https://ncpwd.herokuapp.com/api/";
+    private static final String BASE_URL = "https://ah-code-blooded-staging.herokuapp.com/api/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
 
@@ -35,9 +35,9 @@ public class RetrofitClient {
                     @Override
                     public Response intercept(@NotNull Chain chain) throws IOException {
                         Request original = chain.request();
-                        if (original.url().encodedPath().contains("/users/login/") && original.method().equals("POST")
+                        if (original.url().encodedPath().contains("users/login/") && original.method().equals("POST")
                                 ||
-                                original.url().encodedPath().contains("/users/") && original.method().equals("POST")) {
+                                original.url().encodedPath().contains("users/") && original.method().equals("POST")) {
                             return chain.proceed(original);
                         } else {
                             Request newRequest = original.newBuilder()

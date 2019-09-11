@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private TextView firstname, tv_address, dob, sex, phn, ident, location;
     private EditText edtdateob, editsex, editphone, editidentity, editlocation;
-    private ImageView edticon, saveicon;
+    private ImageView edticon, saveicon, profImage;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
@@ -59,6 +59,7 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
         ident = view.findViewById(R.id.ident);
         edticon = view.findViewById(R.id.edtprofile);
         saveicon = view.findViewById(R.id.savprofile);
+        profImage = view.findViewById(R.id.profimage);
 
         // edit text
         edtdateob = view.findViewById(R.id.edtdateob);
@@ -169,12 +170,8 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 List<Profile> profiles = response.body();
                 for (Profile profile : profiles) {
                     firstname.setText(profile.getUsername());
-                    tv_address.setText(profile.getEmail());
-                    location.setText(profile.getLocation());
-                    dob.setText(profile.getDateOfBirth());
-                    sex.setText(profile.getSex());
-                    phn.setText(profile.getPhone());
-                    ident.setText(profile.getBloodType());
+                    tv_address.setText(profile.getBio());
+//                    profImage.
                 }
             }
 

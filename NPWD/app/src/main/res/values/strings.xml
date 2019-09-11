@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">H-digest</string>
+    <string name="app_name">Click \'n Drink</string>
     <string name="text">Welcome</string>
     <string name="send">Send</string>
     <string name="button">Send</string>
@@ -25,10 +25,10 @@
         <item>New Zealand</item>
         <item>India</item>
     </string-array>
-    <string name="motto">Health is Wealth</string>
-    <string name="vision">A barrier free society for Persons with Disabilities.</string>
-    <string name="mission">Donating blood has benefits for your emotional and physical health. According to a report by the Mental Health Foundation, helping others can:\n\n &#8226; reduce stress\n &#8226; improve your emotional well-being \n &#8226; benefit your physical health</string>
-    <string name="background">The National Council for Persons with Disabilities is a state corporation established by an Act of Parliament; the Persons with Disabilities Act No. 14 of 2003 and set up in November 2004. The Council representation is drawn from key government Ministries and organizations of/for persons with disabilities.</string>
+    <string name="motto">Drink Responsibly</string>
+    <string name="vision">A technology and retail platform that empowers you to revitalise your day by ordering beverages at the touch of a button. </string>
+    <string name="mission">Constantly create motivation within one’s career and personal life. Challenging you to #NeverSettle, we want our RAGEr’s to challenge the status quo. Build sustaining relationships with your friends and colleagues or within your community and environment. We want you to reinvent yourself: Break away from who you think you are and push yourself to become better and unlabel yourself. Besides drinks, revitalise yourself through refreshing perspectives and ideas.</string>
+    <string name="background">Deadlines, long working hours, your boss who keeps loading more on your plate - we get it...life constraints can sometimes weigh you down, and the one thing that’ll keep you going that little bit longer is a drink to satisfy your needs.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

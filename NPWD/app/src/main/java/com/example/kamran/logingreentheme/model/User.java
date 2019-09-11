@@ -5,15 +5,24 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
     private int id;
+    @SerializedName("email")
+    @Expose
     private String email;
+    @SerializedName("password")
+    @Expose
+    private String password;
+    @SerializedName("username")
+    @Expose
     private String username;
+    @SerializedName("bio")
+    @Expose
+    private String bio;
+    @SerializedName("image")
+    @Expose
+    private String image;
     @SerializedName("token")
     @Expose
     private String token;
-
-    public int getId() {
-        return id;
-    }
 
     public String getUsername() {
         return username;
@@ -23,12 +32,20 @@ public class User {
         this.username = username;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getBio() {
+        return bio;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getToken() {
@@ -41,5 +58,20 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 }

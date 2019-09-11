@@ -54,6 +54,7 @@ public class SignupActivity extends AppCompatActivity
             {
                 Intent it = new Intent(SignupActivity.this, LoginActivity.class);
                 startActivity(it);
+                finish();
             }
         });
         sup.setOnClickListener(new View.OnClickListener()
@@ -140,6 +141,7 @@ public class SignupActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

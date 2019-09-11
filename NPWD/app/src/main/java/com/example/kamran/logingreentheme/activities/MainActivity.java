@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,9 @@ import com.example.kamran.logingreentheme.fragments.DiscoverFragment;
 import com.example.kamran.logingreentheme.fragments.EventsFragment;
 import com.example.kamran.logingreentheme.fragments.HomeFragment;
 import com.example.kamran.logingreentheme.fragments.ProfileFragment;
+import com.pkmmte.view.CircularImageView;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mDrawerLayout;
@@ -41,13 +46,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mToggle.syncState();
 
         View headerView = navigationView.getHeaderView(0);
+        CircularImageView circularImageView = headerView.findViewById(R.id.imgHeader);
+        circularImageView.setBorderColor(getResources().getColor(R.color.grey));
+        circularImageView.setBorderWidth(10);
+        circularImageView.setSelectorColor(getResources().getColor(R.color.headings));
+        circularImageView.setSelectorStrokeColor(getResources().getColor(R.color.colorPrimaryDark));
+        circularImageView.setSelectorStrokeWidth(10);
+        circularImageView.addShadow();
         TextView drawerUser = headerView.findViewById(R.id.usHeader);
         TextView drawerAccount = headerView.findViewById(R.id.emHeader);
         SharedPreferences preferences = getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
         String retrievedEmail  = preferences.getString("EMAIL",null);
         String retrievedUsername = preferences.getString("USERNAME", null);
+        String retrievedImage = preferences.getString("profImage",null);
         drawerAccount.setText(retrievedEmail);
         drawerUser.setText(retrievedUsername);
+        Picasso.get().load(retrievedImage).into(circularImageView);
+
+
 
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -86,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 final SharedPreferences preferences = getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
                 AlertDialog.Builder alert = new AlertDialog.Builder(this);
                 alert.setTitle("Logout");
-                alert.setMessage("Do you want to logout?");
+                alert.setMessage("Are you sure you want to logout?");
 
                 alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
@@ -108,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.search:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new DiscoverFragment()).commit();
-                Toast.makeText(this, "Currently Undergoing Maintenance", Toast.LENGTH_SHORT).show();
                 break;
         }
 
