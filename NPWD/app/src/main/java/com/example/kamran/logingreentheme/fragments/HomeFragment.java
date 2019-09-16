@@ -20,7 +20,7 @@ import com.example.kamran.logingreentheme.R;
 import com.example.kamran.logingreentheme.RetrofitClient;
 import com.example.kamran.logingreentheme.activities.LoginActivity;
 import com.example.kamran.logingreentheme.adapters.TopicsAdapter;
-import com.example.kamran.logingreentheme.model.Topic;
+import com.example.kamran.logingreentheme.model.Articles.Article;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
 
-    ArrayList<Topic> topics = new ArrayList<>();
+    ArrayList<Article> topics = new ArrayList<>();
     private TopicsAdapter topicsAdapter;
     private RecyclerView topics_recycler_view;
     private TextView textViewResult;
@@ -65,14 +65,14 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         SharedPreferences preferences = getActivity().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
         String retrivedToken = preferences.getString("TOKEN", null);//second parameter default value
         String token = retrivedToken;
-        Call<List<Topic>> call = RetrofitClient
+        Call<List<Article>> call = RetrofitClient
                 .getInstance()
                 .getApi()
-                .getTopics(token);
+                .getArticles(token);
 
-        call.enqueue(new Callback<List<Topic>>() {
+        call.enqueue(new Callback<List<Article>>() {
             @Override
-            public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
+            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
                 if (!response.isSuccessful()) {
                     textViewResult.setText("code: " + response.code());
                     if (response.code() == 403) {
@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             }
 
             @Override
-            public void onFailure(Call<List<Topic>> call, Throwable t) {
+            public void onFailure(Call<List<Article>> call, Throwable t) {
                 textViewResult.setText(t.getMessage());
 
             }

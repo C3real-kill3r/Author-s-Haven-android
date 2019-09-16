@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kamran.logingreentheme.R;
-import com.example.kamran.logingreentheme.model.Profile;
+import com.example.kamran.logingreentheme.model.Profiles.Profile;
 
 import java.util.ArrayList;
 

@@ -26,7 +26,7 @@ import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity
 {
-    EditText edtemail, edtpassword, edtusername;
+    EditText edtemail, edtpassword, edtusername, confPassword;
     TextView lin,sup;
 
     @Override
@@ -40,6 +40,7 @@ public class SignupActivity extends AppCompatActivity
         edtusername = findViewById(R.id.edtusername);
         edtpassword = findViewById(R.id.edtpassword);
         edtemail = findViewById(R.id.edtemail);
+        confPassword = findViewById(R.id.confPassword);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface custom_font1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
         sup.setTypeface(custom_font1);
@@ -47,6 +48,7 @@ public class SignupActivity extends AppCompatActivity
         lin.setTypeface(custom_font);
         edtusername.setTypeface(custom_font);
         edtemail.setTypeface(custom_font);
+        confPassword.setTypeface(custom_font);
         lin.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -71,6 +73,7 @@ public class SignupActivity extends AppCompatActivity
         String email = edtemail.getText().toString().trim();
         String password = edtpassword.getText().toString().trim();
         String username = edtusername.getText().toString().trim();
+        String confPass = confPassword.getText().toString().trim();
 
         if (email.isEmpty()){
             edtemail.setError("Email is required");
@@ -90,16 +93,32 @@ public class SignupActivity extends AppCompatActivity
             return;
         }
 
+        if (confPass.isEmpty()){
+            confPassword.setError("Password confirmation is required");
+            confPassword.requestFocus();
+            return;
+        }
+
+        if (confPass != password){
+            confPassword.setError("Passwords do not match");
+            confPassword.requestFocus();
+        }
+
         HashMap<String, String> map = new HashMap<>();
                 map.put("email",email);
                 map.put("username",username);
                 map.put("password",password);
+                map.put("confirm_password", confPass);
+
+        HashMap<String, Object> usr = new HashMap<>();
+        usr.put("user", map);
+
 
 
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
                 .getApi()
-                .createUser(map);
+                .createUser(usr);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

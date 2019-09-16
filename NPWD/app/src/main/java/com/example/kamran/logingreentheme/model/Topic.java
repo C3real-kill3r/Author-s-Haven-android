@@ -1,5 +1,6 @@
 package com.example.kamran.logingreentheme.model;
 
+import com.example.kamran.logingreentheme.model.Articles.Author;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

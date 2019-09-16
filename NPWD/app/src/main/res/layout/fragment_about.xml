@@ -23,7 +23,7 @@
                 android:layout_height="200sp"
                 android:layout_centerHorizontal="true"
                 android:padding="10sp"
-                android:src="@drawable/drink" />
+                android:src="@drawable/titl" />
 
             <TextView
                 android:id="@+id/tit"

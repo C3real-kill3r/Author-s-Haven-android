@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String retrievedImage = preferences.getString("profImage",null);
         drawerAccount.setText(retrievedEmail);
         drawerUser.setText(retrievedUsername);
-        Picasso.get().load(retrievedImage).into(circularImageView);
+        Picasso.get().load(retrievedImage).placeholder(R.drawable.prof).into(circularImageView);
 
 
 

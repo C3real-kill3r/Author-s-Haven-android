@@ -1,4 +1,4 @@
-package com.example.kamran.logingreentheme.model;
+package com.example.kamran.logingreentheme.model.Profiles;
 
 
 import com.google.gson.annotations.Expose;

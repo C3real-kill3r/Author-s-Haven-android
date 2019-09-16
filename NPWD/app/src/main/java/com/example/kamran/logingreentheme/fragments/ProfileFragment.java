@@ -1,7 +1,6 @@
 package com.example.kamran.logingreentheme.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,8 +18,7 @@ import android.widget.ViewSwitcher;
 
 import com.example.kamran.logingreentheme.R;
 import com.example.kamran.logingreentheme.RetrofitClient;
-import com.example.kamran.logingreentheme.activities.MainActivity;
-import com.example.kamran.logingreentheme.model.Profile;
+import com.example.kamran.logingreentheme.model.Profiles.Profile;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,11 +1,12 @@
-package com.example.kamran.logingreentheme.model;
-
+package com.example.kamran.logingreentheme.model.Articles;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
 
-public class Profile {
+public class Author {
+
     @SerializedName("username")
     @Expose
     private String username;
@@ -15,6 +16,9 @@ public class Profile {
     @SerializedName("image")
     @Expose
     private String image;
+    @SerializedName("following")
+    @Expose
+    private Boolean following;
 
     public String getUsername() {
         return username;
@@ -40,4 +44,11 @@ public class Profile {
         this.image = image;
     }
 
+    public Boolean getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Boolean following) {
+        this.following = following;
+    }
 }

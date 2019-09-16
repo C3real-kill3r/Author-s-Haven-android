@@ -21,11 +21,10 @@ import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Body;
 
 public class LoginActivity extends AppCompatActivity {
     EditText pswd, usrusr;
-    TextView sup, lin;
+    TextView sup, lin, resPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         usrusr = findViewById(R.id.usrusr);
         pswd = findViewById(R.id.edtpassword);
         sup = findViewById(R.id.sup);
+        resPass = findViewById(R.id.resPass);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface custom_font1 = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
         lin.setTypeface(custom_font1);
@@ -121,6 +121,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(it);
+            }
+        });
+
+        resPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(LoginActivity.this, ResPassActivity.class);
                 startActivity(it);
             }
         });

@@ -9,16 +9,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kamran.logingreentheme.R;
-import com.example.kamran.logingreentheme.model.Topic;
+import com.example.kamran.logingreentheme.model.Articles.Article;
 
 import java.util.ArrayList;
 
 public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder> {
 
-    private ArrayList<Topic> topics = new ArrayList<Topic>();
+    private ArrayList<Article> topics = new ArrayList<>();
     private Context context;
 
-    public TopicsAdapter(Context context, ArrayList<Topic> profiles) {
+    public TopicsAdapter(Context context, ArrayList<Article> profiles) {
         this.topics = profiles;
         this.context = context;
     }
@@ -33,8 +33,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull TopicsAdapter.ViewHolder viewHolder, int i) {
         viewHolder.title.setText(topics.get(i).getTitle());
-        viewHolder.description.setText(topics.get(i).getDescription());
-
+        viewHolder.contents.setText(topics.get(i).getDescription());
     }
 
 
@@ -44,13 +43,14 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView title, description;
+        private TextView title, contents, author;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.edttitle);
-            description = itemView.findViewById(R.id.editdescription);
+            title = itemView.findViewById(R.id.artTitle);
+            contents = itemView.findViewById(R.id.artContent);
+            author = itemView.findViewById(R.id.artAuthor);
         }
     }
 }

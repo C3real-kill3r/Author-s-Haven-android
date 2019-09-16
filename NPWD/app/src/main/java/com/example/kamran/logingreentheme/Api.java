@@ -1,9 +1,8 @@
 package com.example.kamran.logingreentheme;
 
+import com.example.kamran.logingreentheme.model.Articles.Article;
 import com.example.kamran.logingreentheme.model.Person;
-import com.example.kamran.logingreentheme.model.Profile;
-import com.example.kamran.logingreentheme.model.Topic;
-import com.example.kamran.logingreentheme.model.User;
+import com.example.kamran.logingreentheme.model.Profiles.Profile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +20,9 @@ import retrofit2.http.PUT;
 public interface Api {
 
 
-    @FormUrlEncoded
     @POST("users/")
     Call<ResponseBody> createUser(
-            @FieldMap HashMap<String, String> data
+            @Body HashMap User
             );
 
     @POST("users/login/")
@@ -32,8 +30,10 @@ public interface Api {
             @Body HashMap User
             );
 
-//    @GET("profiles/")
-//    Call<List<Profile>> listProfiles();
+    @FormUrlEncoded
+    @POST("account/forgot_password/")
+    Call<ResponseBody> forgotPassword(
+            @FieldMap HashMap<String, String> data);
 
     @GET("profiles/")
     Call<List<Profile>> myProfile(@Header("Authorization") String token);
@@ -44,7 +44,7 @@ public interface Api {
             @Header("Authorization") String token,
             @FieldMap HashMap<String, String> data);
 
-    @GET("topics/")
-    Call<List<Topic>> getTopics(@Header("Authorization") String token);
+    @GET("articles")
+    Call<List<Article>> getArticles(@Header("Authorization") String token);
 
 }
