@@ -4,7 +4,7 @@
     android:id="@+id/activity_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/headings"
+    android:background="#f06192"
     android:layout_centerHorizontal="true"
     tools:context=".activities.SplashActivity">
 

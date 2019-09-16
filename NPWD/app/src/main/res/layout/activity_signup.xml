@@ -38,8 +38,8 @@
                     android:hint="Email Address"
                     android:inputType="text"
                     android:letterSpacing="0.1"
-                    android:textColor="#fff"
-                    android:textColorHint="#d9e5f3"
+                    android:textColor="#000000"
+                    android:textColorHint="#242525"
                     android:textSize="16dp" />
             </LinearLayout>
 
@@ -69,8 +69,8 @@
                     android:hint="Username"
                     android:inputType="text"
                     android:letterSpacing="0.1"
-                    android:textColor="#fff"
-                    android:textColorHint="#d9e5f3"
+                    android:textColor="#000000"
+                    android:textColorHint="#242525"
                     android:textSize="16dp" />
             </LinearLayout>
 
@@ -100,8 +100,8 @@
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:letterSpacing="0.1"
-                    android:textColor="#fff"
-                    android:textColorHint="#d9e5f3"
+                    android:textColor="#000000"
+                    android:textColorHint="#242525"
                     android:textSize="16dp" />
             </LinearLayout>
 
@@ -131,8 +131,8 @@
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
                     android:letterSpacing="0.1"
-                    android:textColor="#fff"
-                    android:textColorHint="#d9e5f3"
+                    android:textColor="#000000"
+                    android:textColorHint="#242525"
                     android:textSize="16dp" />
             </LinearLayout>
 

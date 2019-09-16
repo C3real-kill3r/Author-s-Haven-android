@@ -6,116 +6,49 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Article {
-    @SerializedName("slug")
+    @SerializedName("links")
     @Expose
-    private String slug;
-    @SerializedName("title")
+    private Links links;
+    @SerializedName("count")
     @Expose
-    private String title;
-    @SerializedName("description")
+    private Integer count;
+    @SerializedName("total_pages")
     @Expose
-    private String description;
-    @SerializedName("body")
+    private Integer totalPages;
+    @SerializedName("results")
     @Expose
-    private String body;
-    @SerializedName("tagList")
-    @Expose
-    private List<String> tagList = null;
-    @SerializedName("createdAt")
-    @Expose
-    private String createdAt;
-    @SerializedName("updatedAt")
-    @Expose
-    private String updatedAt;
-    @SerializedName("favorited")
-    @Expose
-    private Boolean favorited;
-    @SerializedName("favoritesCount")
-    @Expose
-    private Integer favoritesCount;
-    @SerializedName("author")
-    @Expose
-    private Author author;
+    private List<Result> results = null;
 
-    public String getSlug() {
-        return slug;
+    public Links getLinks() {
+        return links;
     }
 
-    public void setSlug(String slug) {
-        this.slug = slug;
+    public void setLinks(Links links) {
+        this.links = links;
     }
 
-    public String getTitle() {
-        return title;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
-    public String getDescription() {
-        return description;
+    public Integer getTotalPages() {
+        return totalPages;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTotalPages(Integer totalPages) {
+        this.totalPages = totalPages;
     }
 
-    public String getBody() {
-        return body;
+    public List<Result> getResults() {
+        return results;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
-
-    public List<String> getTagList() {
-        return tagList;
-    }
-
-    public void setTagList(List<String> tagList) {
-        this.tagList = tagList;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Boolean getFavorited() {
-        return favorited;
-    }
-
-    public void setFavorited(Boolean favorited) {
-        this.favorited = favorited;
-    }
-
-    public Integer getFavoritesCount() {
-        return favoritesCount;
-    }
-
-    public void setFavoritesCount(Integer favoritesCount) {
-        this.favoritesCount = favoritesCount;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
 }
 

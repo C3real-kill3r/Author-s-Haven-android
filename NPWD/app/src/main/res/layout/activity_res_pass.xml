@@ -62,8 +62,8 @@
                         android:hint="Email"
                         android:inputType="text"
                         android:letterSpacing="0.1"
-                        android:textColor="#fff"
-                        android:textColorHint="#d9e5f3"
+                        android:textColor="#000000"
+                        android:textColorHint="#242525"
                         android:textSize="16dp" />
                 </LinearLayout>
 

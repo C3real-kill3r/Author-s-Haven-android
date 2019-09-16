@@ -15,10 +15,7 @@ public class Author {
     private String bio;
     @SerializedName("image")
     @Expose
-    private String image;
-    @SerializedName("following")
-    @Expose
-    private Boolean following;
+    private Object image;
 
     public String getUsername() {
         return username;
@@ -36,19 +33,11 @@ public class Author {
         this.bio = bio;
     }
 
-    public String getImage() {
+    public Object getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Object image) {
         this.image = image;
-    }
-
-    public Boolean getFollowing() {
-        return following;
-    }
-
-    public void setFollowing(Boolean following) {
-        this.following = following;
     }
 }
