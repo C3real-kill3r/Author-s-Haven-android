@@ -1,6 +1,7 @@
 package com.example.kamran.logingreentheme;
 
 import com.example.kamran.logingreentheme.model.Articles.Article;
+import com.example.kamran.logingreentheme.model.Articles.Result;
 import com.example.kamran.logingreentheme.model.Person;
 import com.example.kamran.logingreentheme.model.Profiles.Profile;
 
@@ -45,6 +46,6 @@ public interface Api {
             @FieldMap HashMap<String, String> data);
 
     @GET("articles")
-    Call<List<Article>> getArticles(@Header("Authorization") String token);
+    Call<List<Result>> getArticles(@Header("Authorization") String token);
 
 }

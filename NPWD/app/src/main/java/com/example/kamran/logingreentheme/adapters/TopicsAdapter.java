@@ -10,15 +10,16 @@ import android.widget.TextView;
 
 import com.example.kamran.logingreentheme.R;
 import com.example.kamran.logingreentheme.model.Articles.Article;
+import com.example.kamran.logingreentheme.model.Articles.Result;
 
 import java.util.ArrayList;
 
 public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder> {
 
-    private ArrayList<Article> topics = new ArrayList<>();
+    private ArrayList<Result> topics = new ArrayList<>();
     private Context context;
 
-    public TopicsAdapter(Context context, ArrayList<Article> profiles) {
+    public TopicsAdapter(Context context, ArrayList<Result> profiles) {
         this.topics = profiles;
         this.context = context;
     }
